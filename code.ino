@@ -7,6 +7,7 @@
   Expand
   message.txt
   8 KB
+  ﻿
   /*
   ArduinoMqttClient - WiFi Advanced Callback
 
@@ -167,18 +168,9 @@ void loop() {
   if (distance <= 40)
   {
     if (currentMillis - previousMillis >= interval) {
-      digitalWrite(led, HIGH);
-      delay(500);
-      digitalWrite(led, LOW);
-      delay(500);
-      digitalWrite(led, HIGH);
-      delay(500);
-      digitalWrite(led, LOW);
-      delay(500);
-      digitalWrite(led, HIGH);
-      delay(500);
-      digitalWrite(led, LOW);
-      delay(500);
+
+      Led_Blink(3);
+
       // save the last time a message was sent
       previousMillis = currentMillis;
 
@@ -231,4 +223,15 @@ void onMqttMessage(int messageSize) {
   }
   Serial.println();
   Serial.println();
+}
+
+void Led_Blink(int times)
+{
+  for (int i = 0; i < times; i++)
+  {
+    digitalWrite(led, HIGH);
+    delay(500);
+    digitalWrite(led, LOW);
+    delay(500);
+  }
 }
